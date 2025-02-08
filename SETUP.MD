@@ -6,6 +6,11 @@ To set up your environment, you need an anaconda installed in your machine. Then
 conda env create -f environment.yml
 ```
 
+This project will leverage Open AI API, please create .env file and have the following entry:
+```
+OPENAI_API_KEY=[YOUR_API_KEY_HERE]
+```
+
 # Activating the Environment
 
 Once your environment is set up, activate your, you can activate your environment by running the following command : 

@@ -1,2 +1,5 @@
 .env
 .ipynb_checkpoints/
+app/__pycache__/
+inference.ipynb
+testbench.ipynb
