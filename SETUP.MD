@@ -28,9 +28,10 @@ conda activate myenv
 conda env update --file environment.yml --prune
 ```
 
-# Running Jupyter Lab
+# Run The Web UI
+After activating your conda environment, run:
+```
+python run.py
+```
 
-To run the jupyter lab, run:
-```
-jupyter lab
-```
+Then open the link into your browser.
