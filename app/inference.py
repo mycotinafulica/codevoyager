@@ -28,7 +28,8 @@ def inquiry_ai(message: str, chat_history: list[dict[str, str]]):
     print(chat_history)
 
     # The original history won't include the RAG docs, while the one that goes to chatgpt will include one
-    # This will save us some tokens
+    # This will save us some tokens, based on experience, including the whole rag docs on the history doesn't
+    # improve the quality of answer much.
     enriched_chat_history = chat_history.copy()
     chat_history.append({"role": "user", "content": message})
 

@@ -37,7 +37,8 @@ def create_rag_database(source: str, db_path: str,
         tokenizer   = tiktoken.encoding_for_model("text-embedding-3-small")
         token_count = len(tokenizer.encode(content_to_embed))
 
-        # Open AI API has limitation for embedding to 8192 tokens. Possible improvement is to actually chunk the large file into manageable pieces
+        # Open AI API has limitation for embedding, it allows up to 8192 tokens. Possible improvement is to actually chunk the large file into manageable pieces
+        # such as individual methods, but this leave extra works since every language will need different parser, but it can be improved for sure.
         if token_count < 8192:
             if current_tokens_in_batch + token_count < 750000: # There's rate limit of how many tokens you can add in one embedding go, the current limit is 1m
                 ids.append(str(uuid.uuid4()))
@@ -54,7 +55,7 @@ def create_rag_database(source: str, db_path: str,
                 metadatas = []
                 current_tokens_in_batch = 0
                 batch_number += 1
-                # avoiding rate limit
+                # Avoiding rate limit. A possible optimization would actually to implement exponential backoff.
                 time.sleep(120)
         else:
             print("skipped file : " + file_path)
